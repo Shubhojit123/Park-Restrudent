@@ -1,0 +1,100 @@
+/* Menu Section */
+.menu {
+    background: #fff;
+    padding: 80px 10%;
+    text-align: center;
+}
+
+/* Section Heading */
+.menu-heading h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.menu-heading h2 span {
+    color: #ff9800;
+}
+
+.menu-heading p {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+/* Menu Grid */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* Menu Cards */
+.menu-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-card h3 {
+    font-size: 1.5rem;
+    margin: 15px 0 5px;
+    color: #222;
+}
+
+.menu-price {
+    font-size: 1.2rem;
+    color: #ff9800;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Hover Effects */
+.menu-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Button Styling */
+.menu-btn {
+    background: #ff9800;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+    background: #ffd54f;
+    color: #d35400;
+    transform: scale(1.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu-heading h2 {
+        font-size: 2rem;
+    }
+
+    .menu-heading p {
+        font-size: 1.1rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
