@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Menu.css";
+
 const menuItems = [
   { id: 1, name: "Paneer Roll", price: "₹60", image: "/images/Paneer-kathi-roll-1B.jpg" },
   { id: 2, name: "Egg Roll", price: "₹30", image: "/images/Kolkatta-Egg-Roll-4.jpg" },
@@ -35,29 +36,47 @@ const menuItems = [
   { id: 32, name: "Pan Fried Momo", price: "₹80", image: "/images/pan_momo.jpg" }
 ];
 
-
-
 function Menu() {
-    return (
-        <section className="menu" id="menu">
-            <div className="menu-heading">
-                <h2>Our <span>Menu</span></h2>
-                <p>Explore our delicious and carefully crafted dishes.</p>
-            </div>
+  const [showAll, setShowAll] = useState(false);
+  const [animating, setAnimating] = useState(false);
+  const [displayedItems, setDisplayedItems] = useState(menuItems.slice(0, 4));
 
-            <div className="menu-grid">
-                {menuItems.map((item) => (
-                    <div key={item.id} className="menu-card">
-                        <img src={item.image} alt={item.name} />
-                        <h3>{item.name}</h3>
-                        <p className="menu-price">{item.price}</p>
-                    </div>
-                ))}
-            </div>
+  const handleToggle = () => {
+    if (showAll) {
+      setAnimating(true);
+      setTimeout(() => {
+        setDisplayedItems(menuItems.slice(0, 4));
+        setShowAll(false);
+        setAnimating(false);
+      }, 400); 
+    } else {
+      setDisplayedItems(menuItems);
+      setShowAll(true);
+    }
+  };
 
-            <button className="menu-btn">View Full Menu</button>
-        </section>
-    );
+  return (
+    <section className="menu" id="menu">
+      <div className="menu-heading">
+        <h2>Our <span>Menu</span></h2>
+        <p>Explore our delicious and carefully crafted dishes.</p>
+      </div>
+
+      <div className={`menu-grid ${animating ? "fade-out" : ""}`}>
+        {displayedItems.map((item) => (
+          <div key={item.id} className="menu-card">
+            <img src={item.image} alt={item.name} />
+            <h3>{item.name}</h3>
+            <p className="menu-price">{item.price}</p>
+          </div>
+        ))}
+      </div>
+
+      <button className="menu-btn" onClick={handleToggle}>
+        {showAll ? "Show Less" : "View Full Menu"}
+      </button>
+    </section>
+  );
 }
 
 export default Menu;
